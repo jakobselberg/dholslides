@@ -50,19 +50,18 @@ Suppose we have vectors of length $`n`: $`\mathsf{Vec}(A, n)`.
 * Is $`\mathsf{Vec}(A, n + 0)` the same type as $`\mathsf{Vec}(A, n)`?
 
 :::fragment fadeUp
-That depends on whether $`n + 0 = n` is **provable**!
+That depends on whether $`n + 0 = n` is **provable** — so **type-checking becomes undecidable**.
 :::
 
 :::fragment fadeUp
-* **In Lean:** type-checking stays decidable by separating "obvious" equality from proved equality.
-* **In DHOL:** any provable equality counts — so **type-checking becomes undecidable**.
+DHOL accepts this trade-off: theorem proving is undecidable anyway!
 :::
 
 :::notes
 Why isn't adding dependent types to HOL trivial? Here's the core intuition.
 If types depend on numbers like vector length, then checking whether two types match can require proving arithmetic facts like n + 0 = n.
-Lean keeps type-checking decidable with special rules. DHOL takes the simpler route: it allows any provable equality, which makes type-checking undecidable. Since theorem proving is undecidable anyway, DHOL treats that as a worthwhile trade-off.
-(~60s)
+In DHOL, any provable equality counts for type equality, which makes type-checking undecidable. Since theorem proving is undecidable anyway, DHOL treats that as a worthwhile trade-off.
+(~50s)
 :::
 
 # What Does "Semantics" Mean Here?
