@@ -16,7 +16,7 @@ set_option verso.slides.panel false
 
 *Master's Thesis Task*
 
-* **Author:** Jakob
+* **Author:** Jakob Selberg
 * **Tool:** Lean 4 & VersoSlides
 * **Duration:** ~10 minutes
 
@@ -26,11 +26,10 @@ Instead of diving into heavy notation, I want to tell the simple story: what DHO
 (~45s)
 :::
 
-# The Big Picture: Two Worlds of Logic
+# Big Picture
 
 * **Interactive Theorem Provers** (Lean, Rocq, Agda)
-  * Have **dependent types** — types can depend on values (e.g., lists of length $`n`).
-  * Very expressive, but hard to automate.
+  * Have **dependent types** :  types can depend on values (e.g., lists of length $`n`).
 
 :::fragment fadeUp
 * **Automated Theorem Provers** (HOL provers)
@@ -38,16 +37,10 @@ Instead of diving into heavy notation, I want to tell the simple story: what DHO
 :::
 
 :::fragment fadeUp
-* **DHOL** (*Dependently-Typed HOL*) sits right in the middle:
+* **DHOL** (*Dependently-Typed HOL*) :
   * Extends HOL with dependent types while staying compatible with **HOL ATP automation**.
 :::
 
-:::notes
-To understand why DHOL exists, think of two worlds.
-On one side we have proof assistants like Lean with dependent types—super expressive, but you have to guide them. On the other side we have automated HOL provers—great at finding proofs automatically, but they lack dependent types.
-DHOL bridges these two worlds: it extends Higher-Order Logic with dependent types.
-(~60s)
-:::
 
 # Why DHOL Is Tricky (One Example)
 
