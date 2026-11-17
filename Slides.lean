@@ -17,7 +17,7 @@ set_option verso.slides.panel false
 *Master's Thesis Task*
 
 * **Author:** Jakob Selberg
-* **Tool:** Lean 4 & VersoSlides
+* **Tool:** VersoSlides, Gemini
 * **Duration:** ~10 minutes
 
 :::notes
