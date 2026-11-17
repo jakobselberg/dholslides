@@ -30,6 +30,7 @@ Instead of diving into heavy notation, I want to tell the simple story: what DHO
 
 * **Interactive Theorem Provers** (Lean, Rocq, Agda)
   * Have **dependent types** :  types can depend on values (e.g., lists of length $`n`).
+  * TODO: make this a diagram instead
 
 :::fragment fadeUp
 * **Automated Theorem Provers** (HOL provers)
@@ -97,7 +98,8 @@ How do we interpret function types in a model?
 
 :::fragment fadeUp
 * **Lax Models** *(inspired by Henkin Models)*
-  * Allow function types to be interpreted more flexibly — as long as **substitution still works** and **Booleans behave normally**.
+  * Allow function types to be interpreted more flexibly as long as **substitution still works** and **Booleans behave normally**.
+  * insert example to show what that means @TODO
   * **Sound and complete!**
 :::
 
