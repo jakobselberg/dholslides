@@ -96,7 +96,7 @@ How do we interpret function types in a model?
   * **Sound**, but **not complete** (same classic issue as standard HOL models).
 
 :::fragment fadeUp
-* **Lax Models** *(the clever fix, inspired by Henkin)*
+* **Lax Models** *(inspired by Henkin Models)*
   * Allow function types to be interpreted more flexibly — as long as **substitution still works** and **Booleans behave normally**.
   * **Sound and complete!**
 :::
