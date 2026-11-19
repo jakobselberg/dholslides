@@ -32,7 +32,7 @@ I'll walk through five simple questions: what DHOL is, why we want it, what sema
 :::fragment fadeUp
 * **DHOL** *(Dependently-Typed HOL)*:
   * Adds **dependent types** directly to HOL.
-  * Keeps classical Booleans and a single equality — at the cost of **undecidable type-checking**.
+  * Keeps classical Booleans and a single equality at the cost of **undecidable type-checking**.
 :::
 
 :::notes
@@ -44,13 +44,13 @@ DHOL sits in between: it adds dependent types directly to HOL while keeping clas
 
 # 2. Ok, but why?
 
-* **HOL** has mature, strong **Automated Theorem Provers (ATPs)**, whereas automation for DTT is harder and less mature.
+* **HOL** has mature, strong **Automated Theorem Provers (ATPs)**
+* but many interactive theorem provers use **DTT**
 * **DHOL** brings dependent types close to HOL ATPs:
-  * A sound & complete translation (`DHOL → HOL`) lets existing HOL provers run on DHOL problems.
-  * Standardized in **TPTP**, with dedicated DHOL provers emerging too.
+  * A sound & complete translation (`DHOL → HOL`) lets existing HOL provers run on problems that contain dependent types.
 
 :::fragment fadeUp
-* The goal is to close the interoperability gap between those worlds
+* The goal is to close the interoperability gap between worlds
 :::
 
 :::notes
