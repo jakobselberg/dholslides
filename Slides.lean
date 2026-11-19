@@ -25,10 +25,9 @@ I'll walk through five simple questions: what DHOL is, why we want it, what sema
 
 # 1. What is DHOL?
 
-Compare three families of logic:
 
 * **HOL** *(Higher-Order Logic)*: simple types, classical Booleans, one equality relation.
-* **DTT / CoC** *(Lean, Rocq, Agda)*: **dependent types** (e.g., vectors of length $`n`), but separates definitional vs. propositional equality to keep type-checking decidable.
+* **DTT / CoC** *(Lean, Rocq, Agda)*: **dependent types**, separate definitional vs. propositional equality that keep type-checking decidable.
 
 :::fragment fadeUp
 * **DHOL** *(Dependently-Typed HOL)*:
@@ -51,8 +50,7 @@ DHOL sits in between: it adds dependent types directly to HOL while keeping clas
   * Standardized in **TPTP**, with dedicated DHOL provers emerging too.
 
 :::fragment fadeUp
-* Acts as a clean **intermediate language** (like an IR) for hammering from DTT proof assistants to ATPs.
-* **Why accept undecidable typing?** Theorem proving is undecidable anyway — and ATPs keep getting stronger.
+* The goal is to close the interoperability gap between those worlds
 :::
 
 :::notes
