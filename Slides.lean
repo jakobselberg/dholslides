@@ -88,15 +88,12 @@ Model theory provides that grounding: types mean sets, terms mean elements, and 
 
 # 4. What are DHOL's Semantics?
 
-Most of the interpretation is forced: types are sets, terms are elements, Booleans are true/false.
-The one real design choice is **function types**, since a model has to decide *which* functions exist. *(Rabe, IJCAR 2026)*
+Types are sets, terms are elements, formulas are true/false. The key question is how to interpret **function types**.
 
-* **Strict Models** *(the natural idea)*
-  * Function types are interpreted as **all** mathematical functions.
-  * **Sound**, but **not complete**: the proof rules cannot capture every property of "all functions".
-* **Lax Models** *(generalizing Henkin models, which use only a subset of functions in HOL)*
-  * Function types may be **arbitrary sets**, as long as **Booleans** and **substitution** still behave properly.
-  * **Sound and complete!** (via a term-model construction)
+* **Strict Models:** function types are **all** functions.
+  * Sound, but **not complete**
+* **Lax Models:** function types may be **arbitrary sets** (generalizing Henkin models).
+  * Sound **and complete**
 
 :::notes
 So what do DHOL's semantics actually look like? there are two kinds of models:
