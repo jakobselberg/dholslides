@@ -12,12 +12,10 @@ set_option verso.slides.panel false
 
 #doc (Slides) "Formalizing the Semantics of DHOL" =>
 
-# Formalizing the Semantics of DHOL
+# Formalizing the Semantics of DHOL in Lean
 
-*Master's Thesis Task*
+*Master's Thesis Antrittspraesentation*
 
-* **Author:** Jakob
-* **Built with:** Lean 4 & VersoSlides
 
 :::notes
 Hi everyone! Today I'll introduce my master's thesis task: formalizing the semantics of DHOL in Lean 4.
