@@ -81,7 +81,7 @@ This lets us ask two fundamental questions:
 Next, a quick refresher: what are semantics?
 By themselves, syntax and proof rules are just rules for pushing symbols around. Like a protocol stack, a formal system only becomes useful when it is grounded in actual meaning.
 Model theory provides that grounding: types mean sets, terms mean elements, and formulas mean truth values. Once we have that, we can check soundness—our rules never prove false things—and completeness—our rules aren't missing anything.
-(~80s)
+(~80s) (maybe even calling something a proof/proof rule without a notion of truth is abuse of notation, because in common english those notions are intertwined)
 :::
 
 # 4. What are DHOL's Semantics?
@@ -89,12 +89,12 @@ Model theory provides that grounding: types mean sets, terms mean elements, and 
 How do we interpret function types in a model? *(Rabe, IJCAR 2026)*
 
 * **Strict Models** *(the natural idea)*
-  * Types $`\mapsto` sets, dependent functions $`\mapsto` **real** mathematical functions.
-  * **Sound**, but **not complete** (same classic issue as standard HOL models).
+  * Types $`\mapsto` sets, dependent functions $`\mapsto` **all** mathematical functions.
+  * **Sound**, but **not complete**
 
 :::fragment fadeUp
-* **Lax Models** *(generalizing Henkin models)*
-  * Function types can be interpreted more flexibly — as long as **Booleans** and **substitution** still behave properly.
+* **Lax Models** *(generalizing Henkin models, which restrict to a subset of functions in HOL)*
+  * Function types can be interpreted even more flexibly (as arbitrary sets), as long as **Booleans** and **substitution** still behave properly.
   * **Sound and complete!** (via a term-model construction)
 :::
 
@@ -133,4 +133,17 @@ Why is that worthwhile here? Because DHOL's undecidable typing tightly couples s
 And as for how the Lean formalization itself will look in detail—that's still a big question mark right now as I'm just getting started.
 Thanks for listening!
 (~30s)
+:::
+
+# Key Literature
+
+* **Rothgang, Rabe, Benzmüller (2025)** — *Dependently Typed Higher-Order Logic* (ACM ToCL)
+  * Introduces DHOL and the sound & complete `DHOL → HOL` translation.
+* **Rabe (2026)** — *Semantics for Dependently-Typed HOL* (IJCAR 2026)
+  * Defines strict and lax models for DHOL and proves soundness & completeness.
+* **Kemal Yüksel** — *Formalization of DHOL Syntax*
+  * Existing formalization of DHOL syntax to build on.
+
+:::notes
+Here are the main references this thesis builds on. Happy to take any questions!
 :::
