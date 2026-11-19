@@ -27,7 +27,7 @@ I'll walk through five simple questions: what DHOL is, why we want it, what sema
 
 
 * **HOL** *(Higher-Order Logic)*: simple types, classical Booleans, one equality relation.
-* **DTT / CoC** *(Lean, Rocq, Agda)*: **dependent types**, separate definitional vs. propositional equality that keep type-checking decidable.
+* **DTT** *Dependent Type Theory*: **dependent types**, separate definitional vs. propositional equality that keep type-checking decidable.
 
 :::fragment fadeUp
 * **DHOL** *(Dependently-Typed HOL)*:
@@ -45,7 +45,9 @@ DHOL sits in between: it adds dependent types directly to HOL while keeping clas
 # 2. Ok, but why?
 
 * **HOL** has mature, strong **Automated Theorem Provers (ATPs)**
-* but many interactive theorem provers use **DTT**
+  * e.g., Leo-III, Satallax, Zipperposition
+* but many interactive theorem provers (ITPs) are based on **DTT**
+  * e.g., Lean, Rocq, Agda
 * **DHOL** brings dependent types close to HOL ATPs:
   * A sound & complete translation (`DHOL → HOL`) lets existing HOL provers run on problems that contain dependent types.
 
@@ -55,9 +57,9 @@ DHOL sits in between: it adds dependent types directly to HOL while keeping clas
 
 :::notes
 Ok, but why build DHOL?
-Because HOL has decades of very strong automated theorem provers, while automation for full dependent type theory is much harder.
-DHOL lets you use dependent types while staying close enough to HOL that we can translate DHOL problems to HOL provers—or build native DHOL provers—under a shared TPTP standard. It can also serve as a clean intermediate representation for hammering from systems like Lean.
-And the trade-off of undecidable type-checking is acceptable because theorem proving is undecidable anyway.
+Because HOL has decades of very strong automated theorem provers.
+DHOL lets you use dependent types while staying close enough to HOL that we can translate DHOL problems to HOL provers—or build native DHOL provers. It can also serve as a intermediate representation for hammering from systems like Lean.
+And the trade-off of undecidable type-checking might be acceptable because theorem proving is undecidable anyway.
 (~90s)
 :::
 
@@ -86,51 +88,52 @@ Model theory provides that grounding: types mean sets, terms mean elements, and 
 
 # 4. What are DHOL's Semantics?
 
-How do we interpret function types in a model? *(Rabe, IJCAR 2026)*
+Most of the interpretation is forced: types are sets, terms are elements, Booleans are true/false.
+The one real design choice is **function types**, since a model has to decide *which* functions exist. *(Rabe, IJCAR 2026)*
 
 * **Strict Models** *(the natural idea)*
-  * Types $`\mapsto` sets, dependent functions $`\mapsto` **all** mathematical functions.
-  * **Sound**, but **not complete**
-
-:::fragment fadeUp
-* **Lax Models** *(generalizing Henkin models, which restrict to a subset of functions in HOL)*
-  * Function types can be interpreted even more flexibly (as arbitrary sets), as long as **Booleans** and **substitution** still behave properly.
+  * Function types are interpreted as **all** mathematical functions.
+  * **Sound**, but **not complete**: the proof rules cannot capture every property of "all functions".
+* **Lax Models** *(generalizing Henkin models, which use only a subset of functions in HOL)*
+  * Function types may be **arbitrary sets**, as long as **Booleans** and **substitution** still behave properly.
   * **Sound and complete!** (via a term-model construction)
-:::
 
 :::notes
-So what do DHOL's semantics actually look like? Florian Rabe's recent paper introduces two kinds of models.
-First, strict models: the intuitive approach where dependent functions in DHOL map to real set-theoretic functions. This is sound, but—just like standard models in HOL—not complete.
-To get completeness, Rabe introduces lax models, generalizing Henkin models: you relax how function types are interpreted, requiring only that Booleans and substitution behave properly. With lax models, we get both soundness and completeness.
+So what do DHOL's semantics actually look like? there are two kinds of models:
+strict models: the intuitive approach where dependent functions in DHOL map to real set-theoretic functions. This is sound, but not complete;
+secondly, lax models : you relax how function types are interpreted, requiring only that Booleans and substitution behave properly. With lax models, we get both soundness and completeness.
 (~90s)
 :::
 
 # 5. Formalizing Them — What & Why?
 
 * **What does it mean?**
-  * Encode DHOL's syntax, proof rules, models, and soundness/completeness proofs inside a proof assistant (**Lean 4**) so a computer checks every step.
+  * Encode DHOL's syntax, proof rules, models, and soundness/completeness proofs
 
 :::fragment fadeUp
 * **Why do it?**
-  * Because typing is undecidable and intertwined with provability, the paper proofs have tight **mutual dependencies** — easy to overlook subtle edge cases on paper.
-  * A machine-checked semantics provides a trustworthy reference for future provers and translations.
+  * **Trust:** DHOL's typing is undecidable and intertwined with provability, so syntax, typing, proofs, and semantics depend on each other in one big mutual argument. It's easy to overlook subtle cases on paper; a proof assistant checks every one.
+  * **Reference:** a formally verified semantics is something other tools can build on, e.g., provers, calculi, and translations such as `DHOL → HOL` can be checked against it.
 :::
 
 :::notes
 Finally: what does it mean to formalize these semantics, and why bother?
 Formalizing means encoding the syntax, proof rules, model definitions, and soundness and completeness proofs in Lean 4 so the computer checks every detail.
-Why is that worthwhile here? Because DHOL's undecidable typing tightly couples syntax, typing, proofs, and semantics in mutual inductions—it's exactly the kind of delicate metatheory where paper proofs can hide subtle gaps. A verified formalization gives us a rock-solid reference.
+Why is that worthwhile here? First, trust: DHOL's undecidable typing tightly couples syntax, typing, proofs, and semantics in mutual inductions, which is exactly the kind of delicate metatheory where paper proofs can hide subtle gaps, and Lean forces every case to be handled. Second, a formally verified semantics can serve as a reference that other tools, such as provers and translations like DHOL to HOL, can be checked against.
 (~80s)
 :::
 
 # The Lean Formalization
 
 ```html
-<div style="font-size: 6em; font-weight: bold; text-align: center; margin-top: 0.3em;">?</div>
+<div style="font-size: 4em; font-weight: bold; text-align: center; margin-top: 0.2em;">?</div>
 ```
 
+* **Scope:** ? (open ended)
+* **Current status:** still playing with toy examples
+
 :::notes
-And as for how the Lean formalization itself will look in detail—that's still a big question mark right now as I'm just getting started.
+And as for how the Lean formalization itself will look in detail, that's still a big question mark right now. The scope is open ended, and so far I'm still playing with toy examples.
 Thanks for listening!
 (~30s)
 :::
